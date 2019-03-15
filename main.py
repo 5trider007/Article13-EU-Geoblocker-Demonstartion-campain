@@ -12,12 +12,12 @@ class S(BaseHTTPRequestHandler):
         def startHTTPServer():
                 os.system("python -m SimpleHTTPServer 8081 &")
 
-        def __check(self, ip):
+        def __check(self, ip, url):
                 match = geolite2.lookup(ip)
                 if match is not None:
                         print match
                         if match.continent == 'EU':
-                                return '<meta http-equiv="refresh" content="0; URL=http://localhost:8081/article13.html">'
+                                return '<meta http-equiv="refresh" content="0; URL=http://localhost:8081/article13.html?url=' + url + '">'
 
                 return ""
 
@@ -36,7 +36,7 @@ class S(BaseHTTPRequestHandler):
                 params = parse_qs(urlparse(self.path).query)
                 if params is not None:
                         try:
-                                res = self.__check(params['ip'][0])
+                                res = self.__check(params['ip'][0], params['url'][0])
                                 self.__setHtmlHeader()
                                 self.wfile.write(res)
                                 return
@@ -59,7 +59,7 @@ class S(BaseHTTPRequestHandler):
                         if post_data is not None:
                                 print post_data
                                 try:
-                                        res = self.__check(post_data['ip'][0])
+                                        res = self.__check(post_data['ip'][0], params['url'][0])
                                         self.__setHtmlHeader()
                                         self.wfile.write(res)
                                         return

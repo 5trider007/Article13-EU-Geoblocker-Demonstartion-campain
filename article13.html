@@ -23,6 +23,12 @@
         border-radius: 1em;
         text-align:center;
     }
+
+    div b
+    {
+        font-size: 50px;
+    }
+
     a:link, a:visited {
         color: #38488f;
         text-decoration: none;
@@ -45,7 +51,38 @@
 <div>
     <h1>Your Request was blocked!</h1>
     <h3>Due to article 13 we cannot process your request, to avoid confusion with the EU directive. We ask for your understanding</h3>
-    <p>You can still reach us via the Tor Browser</p>
+    <h2>This is what the Internet could look like when Article 13 comes into force</h2>
+    <h4>You will redirected to your site after 10 seconds...</h4>
+    <b id="js_countdown"></b>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    function getSourceUrl()
+    {
+        return location.search.split('url=')[1]
+    }
+
+    if(document.cookie.indexOf('have_seen_blocker=') >= 0)
+    {
+        window.location.href = getSourceUrl();
+    }
+    else
+    {
+        var i = 10;
+        $('#js_countdown').text(i);
+        var timer = setInterval(function(){
+            $('#js_countdown').text(i);
+            i--;
+            if(i <= 0)
+            {
+                expiry = new Date();
+                expiry.setTime(expiry.getTime()+(1440*60*1000)); //24hours
+                document.cookie = "have_seen_blocker=1; expires=" + expiry.toGMTString();
+                window.location.href = getSourceUrl();
+            }
+        }, 1000);
+    }
+
+</script>
 </body>
 </html>
