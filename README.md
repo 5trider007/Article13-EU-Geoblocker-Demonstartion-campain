@@ -1,7 +1,11 @@
 # Article 13 EU Geoblocker
 
-The Article 13 EU Geoblocker is a small project to show how the internet could show if this article come through.
+The Article 13 EU Geoblocker is a small project to show how the internet could be if this article come through.
 The intension behind this project is a demo over the internet.
+
+How it works?
+
+All users of the europe will see a blockpage for 10 seconds and then thy will redirected to the normal page what they want to visit. 
 
 #savetheinternet, #saveyourinternet, #wearenotbots
 
