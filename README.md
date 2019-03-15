@@ -44,7 +44,6 @@ if(!isset($_COOKIE['have_seen_blocker'])) //if client has not seen the blocker i
 	setcookie('have_seen_blocker', "1");
 }
 ?>
-
+```
 Third:
 run ~$: python main.py
-```
