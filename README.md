@@ -28,6 +28,10 @@ pip install python-geoip-geolite2
 
 Installation:
 
+First: 
+Move the complete directory where you want.
+
+Second:
 Paste this in to your website as php-code.
 You can paste it on all subpages if you want.
 ```php
@@ -40,4 +44,7 @@ if(!isset($_COOKIE['have_seen_blocker'])) //if client has not seen the blocker i
 	setcookie('have_seen_blocker', "1");
 }
 ?>
+
+Third:
+run ~$: python main.py
 ```
